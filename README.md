@@ -57,8 +57,10 @@ def extract_job(html): # html을 인자로 받는다.
 
 위의 코드에서 if문으로 company의 링크가 있는지에 따라 나눴다. 놀랍게도 링크가 없는 회사가 존제하였다.
 원래는 다음과 같이 링크가 있어야 정상이다. 
-<img src = "https://user-images.githubusercontent.com/60593969/104808969-0ffddc80-582d-11eb-92f4-4e360af10479.png" width="500px">
+
+<img src = "https://user-images.githubusercontent.com/60593969/104808969-0ffddc80-582d-11eb-92f4-4e360af10479.png" width="800px">
 
 하지만 없는 회사가 있었다.
-<img src = "https://user-images.githubusercontent.com/60593969/104808972-112f0980-582d-11eb-91c7-b73eefe4b62c.png" width="500px">
+
+<img src = "https://user-images.githubusercontent.com/60593969/104808972-112f0980-582d-11eb-91c7-b73eefe4b62c.png" width="400px">
 
