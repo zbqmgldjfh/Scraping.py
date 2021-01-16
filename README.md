@@ -30,24 +30,24 @@ def get_last_page(url):  # 인자로 들어온 indeed url
 
 ___
 
-###  extract_job (job 추출함수)
+### extract_job (job 추출함수)
 
 ```python
 def extract_job(html): # html을 인자로 받는다.
     title = html.find("h2", {"class": "title"}).find("a")["title"] # h2를 찾아 title class안의 anchor의 title 하나만 찾음
     company = html.find("span", {"class": "company"}) # span element의 company class에서 회사목록 추출
     if company: # company링크가 있다면
-        company_anchor = company.find("a")
-        if company_anchor is not None:
-            company = str(company_anchor.string)
-        else:
+        company_anchor = company.find("a")  # anchor를 찾음
+        if company_anchor is not None:  # anchor가 None이 아니라면
+            company = str(company_anchor.string)  # 회사 string으로저장
+        else: # None이라면
             company = str(company.string)
-        company = company.strip()
-    else: // company링크가 없다면
+        company = company.strip()  # 여백제거
+    else: # company링크가 없다면
         company = None
     location = html.find("div", {"class": "recJobLoc"})["data-rc-loc"]
     job_id = html["data-jk"]
-    return{
+    return{  # 딕셔너리로 반환
         'title': title,
         'company': company,
         'location': location,
@@ -64,3 +64,21 @@ def extract_job(html): # html을 인자로 받는다.
 
 <img src = "https://user-images.githubusercontent.com/60593969/104808972-112f0980-582d-11eb-91c7-b73eefe4b62c.png" width="400px">
 
+____
+
+### CSV exporter
+
+결과값을 CSV 형태로 저장
+```python
+def save_to_file(jobs):
+    file = open("jobs.csv", mode="w", encoding="utf-8")  # write모드
+    writer = csv.writer(file) 
+    writer.writerow(["title", "company", "location", "link"])  # row단위로 적기
+    for job in jobs: # jobs 리스트에서 반복
+        writer.writerow(list(job.values()))
+    return
+```
+
+___
+
+이외의 간단한 코드는 주석을 통하여 설명하겠습닏다. 감사합니다.
